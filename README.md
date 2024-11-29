@@ -4,7 +4,7 @@ This repository contains two Python programs for my Deep Learning assignment. Th
 
 Files Included
 
-CNN_image_recognition.py
+CNN_image_recognition.py, 
 predict_house_prices.py
 
 Credits: Original program by Joseph Lee.
