@@ -1,5 +1,5 @@
-# This program was created by Joseph Lee. 
-# Documentation updated by Kevin Dzitkowski. 
+# This program was created by Joseph Lee.
+# Documentation updated by Kevin Dzitkowski.
 # GitHub Repository: https://github.com/josephlee94/intuitive-deep-learning
 
 import tensorflow as tf
