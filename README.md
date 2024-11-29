@@ -10,9 +10,6 @@ predict_house_prices.py
 Credits: Original program by Joseph Lee.
 
 How to Run the Programs
-Clone this repository to your local machine:
-
-git clone https://github.com/YourUsername/DeepLearning_Assignment.git
 
 Install the required Python packages:
 pip install keras tensorflow scikit-learn scipy h5py
