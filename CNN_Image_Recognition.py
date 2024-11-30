@@ -2,11 +2,16 @@
 # Documentation updated by Kevin Dzitkowski. 
 # GitHub Repository: https://github.com/josephlee94/intuitive-deep-learning
 
+
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
 from tensorflow.keras.datasets import cifar10
 from tensorflow.keras.utils import to_categorical
+import os
+
+# Suppress TensorFlow warnings
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 # Load CIFAR-10 dataset
 (X_train, y_train), (X_test, y_test) = cifar10.load_data()
@@ -14,10 +19,11 @@ from tensorflow.keras.utils import to_categorical
 # Normalize the data
 X_train, X_test = X_train / 255.0, X_test / 255.0
 
-# One-hot encode labels
-y_train, y_test = to_categorical(y_train), to_categorical(y_test)
+# One-hot encode the labels
+y_train = to_categorical(y_train, 10)
+y_test = to_categorical(y_test, 10)
 
-# Model definition
+# Define the CNN model
 model = Sequential([
     Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)),
     MaxPooling2D((2, 2)),
@@ -32,8 +38,11 @@ model = Sequential([
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
 # Train the model
-model.fit(X_train, y_train, epochs=10, validation_data=(X_test, y_test), verbose=1)
+model.fit(X_train, y_train, epochs=10, batch_size=64, validation_split=0.2)
 
 # Evaluate the model
 loss, accuracy = model.evaluate(X_test, y_test)
-print(f"Test Accuracy: {accuracy:.2f}")
+print(f"Test Accuracy: {accuracy}")
+
+# Keep the console open
+input("Press Enter to exit...")
